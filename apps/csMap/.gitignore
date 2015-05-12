@@ -1,0 +1,13 @@
+Website/obj/
+Website/node_modules/
+Website/public/bower_components/
+
+*.orig
+*.map
+Website/ClientConnection.js
+Website/layers/flightradar.js
+Website/public/cs/
+Website/sensors/datasource.js
+Website/public/js/cs/
+Website/server.js
+Website/services/**/*.js

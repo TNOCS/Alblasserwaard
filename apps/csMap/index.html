@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html ng-app="csWebApp">
+	<head>
+		<!--[if lte IE 8]>
+			<script>
+				document.createElement('ng-include');
+				document.createElement('ng-pluralize');
+				document.createElement('ng-view');
+
+				// Optionally these for CSS
+				document.createElement('ng:include');
+				document.createElement('ng:pluralize');
+				document.createElement('ng:view');
+			</script>
+		<![endif]-->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="description" content="csMap, your mapping solution.">
+		<meta name="author" content="Arnoud de Jong, Erik Vullings">
+		<meta name="color:Accent" content="#a98e2e" />
+
+        <!--TODO Add your title here-->
+	    <title>csMap</title>
+
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="bower_components/leaflet/dist/leaflet.css" rel="stylesheet" />
+        <link href="bower_components/dcjs/dc.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/csStyles.css"/>
+
+        <link href="bower_components/leaflet.markercluster/dist/MarkerCluster.css" rel="stylesheet" />
+        <link href="bower_components/leaflet.markercluster/dist/MarkerCluster.Default.css" rel="stylesheet" />
+        <link href="bower_components/leaflet.locatecontrol/src/L.Control.Locate.css" rel="stylesheet" />
+        <link href="bower_components/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
+
+		<link rel="stylesheet" href="css/xbbcode.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/pnotify.custom.min.css" />
+
+        <link rel="shortcut icon" href="favicon.ico">
+	</head>
+<body data-ng-controller="appCtrl" data-ng-cloak data-ng-init="showMap=true">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet.js"></script>
+    <script src="bower_components/leaflet.locatecontrol/src/L.Control.Locate.js"></script>
+    <script src="bower_components/leaflet-ajax/dist/leaflet.ajax.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+
+    <script src="js/cs/csComp.js"></script>
+    <script src="views/map/MapViewCtrl.js"></script>
+
+    <script src="app/search/SearchCtrl.js"></script>
+    <script src="app/app.js"></script>
+
+    <script src="js/cs/dashboard.min.js"></script>
+    <script src="js/cs/stringformat-1.09.min.min.js"></script>
+    <script src="js/cs/stringformat.nl-NL.min.js"></script>
+    <script src="js/cs/xbbcode.min.js"></script>
+    <script src="js/cs/jquery.cookies.min.js"></script>
+    <script src="bower_components/chroma-js/chroma.min.js"></script>
+    <script src="bower_components/d3/d3.min.js"></script>
+    <script src="bower_components/crossfilter/crossfilter.min.js"></script>
+    <script src="bower_components/dcjs/dc.min.js"></script>
+    <script src="bower_components/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    <script src="bower_components/async/lib/async.js"></script>
+    <script src="js/cs/pnotify.custom.min.js"></script>
+    <script src="js/cs/jqueryinjectCSS.min.js"></script>
+
+    <div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="navbar-header"data-ng-cloak>
+            <a class="menutoggle"><i class="fa fa-bars"></i></a>
+            <a class="navbar-brand" style="margin-top: -5px;" href="{{vm.$layerService.project.url}}" target="_blank">
+                <img data-ng-src="{{vm.$layerService.project.logo}}" alt="{{vm.$layerService.project.title}}" width="32" height="32" />
+                {{vm.$layerService.project.title}}
+            </a>
+        </div>
+
+        <!-- Link to views -->
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li data-ng-class="{ active: vm.isActive('/map')}"><a href="#/map" data-ng-click="showMap=true">Map</a></li>
+                <li data-ng-class="{ active: vm.isActive('/table')}"><a href="#/table" data-ng-click="vm.showTable()">Table</a></li>
+            </ul>
+
+            <!-- Search form -->
+            <form class="navbar-form navbar-right" style="margin-right:0" role="search" data-ng-controller="searchCtrl">
+                <div id="scrollable-dropdown-menu" class="form-group has-feedback navbar-right">
+<!--                     <pre>Model: {{location | json}}</pre>-->
+
+                    <input data-ng-model="vm.searchText"
+                           typeahead="address as address.shortName(25) for address in vm.getLocation($viewValue)"
+                           typeahead-loading="loadingLocations"
+                           typeahead-min-length="2"
+                           typeahead-editable="false"
+                           typeahead-on-select="vm.onSelect($item, $model, $label)"
+                           id="searchbox"
+                           type="text"
+                           placeholder="Search"
+                           class="typeahead form-control">
+<!--                    <span ng-if="loadingLocations"  id="searchicon" class="fa fa-refresh fa-spin"></span>-->
+                    <span id="searchicon" class="fa fa-search form-control-feedback"></span>
+                </div>
+            </form>
+
+            <!--<form role="search" _lpchecked="1" class="navbar-form navbar-right">
+                <div class="form-group has-feedback navbar-right" ng-controller="searchFormCtrl">
+                    <span style="direction: ltr; display: block; position: static;" class="twitter-typeahead">
+                        <google-places location=location></google-places>
+                        <button ng-click="vm.doSearch()" class="btn btn-primary">
+                            &nbsp;<span id="searchicon" class="fa form-control-feedback fa-search"></span>
+                            &nbsp;
+                        </button>
+                    </span>
+                </div>
+            </form>-->
+
+        </div>
+    </div>
+
+		<div id="map" data-ng-show="vm.$mapService.isVisible" data-ng-controller="mapLayersCtrl" tabindex="0" class="leaflet-container leaflet-touch leaflet-fade-anim"></div>
+
+	<div data-ui-view style="position: absolute;
+top: 50px;
+width: 100%;
+height: 100%;pointer-events: none"></div>
+
+	<timeline data-ng-show="vm.$mapService.timelineVisible" style="height: 100vh;"></timeline>
+
+</body>
+</html>

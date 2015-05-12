@@ -1,0 +1,12 @@
+csServerComp/obj/
+csComp/obj/
+csComp/dist/
+csCompTests/obj/
+csCompTests/dist/
+csCompTests/node_modules/
+csCompTests/bower_components/
+csCompTests/csComp/
+*.orig
+*.config
+csComp/js/
+csComp/node_modules/
