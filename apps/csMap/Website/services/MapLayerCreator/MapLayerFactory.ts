@@ -1,5 +1,6 @@
-import express    = require('express');
-import MessageBus = require('../bus/MessageBus');
+import express              = require('express');
+import MessageBus           = require('../bus/MessageBus');
+import pg                   = require('pg');
 import ConfigurationService = require('../configuration/ConfigurationService');
 
 interface ILayerDefinition {
@@ -23,13 +24,15 @@ interface ILayerDefinition {
 
 interface ILayerTemplate {
     layerDefinition: ILayerDefinition;
-    propertyTypes:   csComp.Services.IPropertyType[];
-    properties: csComp.Services.IProperty[];
+    propertyTypes  : csComp.Services.IPropertyType[];
+    properties     :      csComp.Services.IProperty[];
 }
 
 /** A factory class to create new map layers based on input, e.g. from Excel */
 class MapLayerFactory {
-    constructor(private configService: ConfigurationService, private messageBus: MessageBus) {}
+    constructor(private configService: ConfigurationService, private messageBus: MessageBus) {
+        this.connect();
+    }
 
     public process(req: express.Request, res: express.Response) {
         console.log('POST /');
@@ -41,6 +44,25 @@ class MapLayerFactory {
             enabled : true });
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.end('');
+    }
+
+    private connect() {
+        var conString = process.env.DATABASE_URL || 'postgres://bag_user:bag4all@localhost:5432/bag';
+        var client = new pg.Client(conString);
+
+        client.connect(function(err) {
+            if (err) {
+                return console.error('could not connect to postgres', err);
+            }
+            client.query('SELECT * FROM adres WHERE adres.postcode=\'2587SG\'', function(err, result) {
+                if (err) {
+                    return console.error('error running query', err);
+                }
+                console.log(result.rows[0]);
+                //output: Tue Jan 15 2013 19:12:47 GMT-600 (CST)
+                client.end();
+            });
+        });
     }
 
     public static createMapLayer(template: ILayerTemplate) {

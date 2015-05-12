@@ -31,6 +31,7 @@
         "./Scripts/typings/leaflet/control-sidebar.d.ts",
         "./Scripts/typings/leaflet/leaflet.d.ts",
         "./Scripts/typings/node/node.d.ts",
+        "./Scripts/typings/pg/pg.d.ts",
         "./Scripts/typings/q/Q.d.ts",
         "./Scripts/typings/socketio/socket.io.d.ts",
         "./Scripts/typings/xbbcode/xbbcode.d.ts",
@@ -41,6 +42,7 @@
         "./services/MapLayerCreator/MapLayerFactory.ts",
         "./services/bus/MessageBus.ts",
         "./services/configuration/ConfigurationService.ts",
-        "./services/configuration/IConfiguration.ts"
+        "./services/configuration/IConfiguration.ts",
+        "./services/database/BagDatabase.ts"
     ]
 }

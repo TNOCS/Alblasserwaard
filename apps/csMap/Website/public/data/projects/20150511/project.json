@@ -2901,6 +2901,23 @@
 					"enabled" : false,
 					"opacity" : 100
 				}, {
+					"id" : "Risico",
+					"reference" : "Risico",
+					"languages" : {
+						"nl" : {
+							"title" : "Risico Alblasserwaard",
+							"description" : "Risico Alblasserwaard."
+						},
+						"en" : {
+							"title" : "Risk Alblasserwaard",
+							"description" : "Risk Alblasserwaard."
+						}
+					},
+					"type" : "GeoJson",
+					"url" : "data/projects/20150511/alblasserwaard_risico.json",
+					"enabled" : false,
+					"opacity" : 100
+				}, {
 					"id" : "OOVPOI",
 					"reference" : "OOVPOI",
 					"languages" : {

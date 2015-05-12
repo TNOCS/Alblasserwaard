@@ -11,3 +11,4 @@ Website/sensors/datasource.js
 Website/public/js/cs/
 Website/server.js
 Website/services/**/*.js
+Website/public/app/app.js

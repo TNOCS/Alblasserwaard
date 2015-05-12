@@ -1,5 +1,5 @@
 {
-    "title": "csMap",
+    "title": "Domino",
     "maxBounds": {
         "southWest": [ 49.2, 1.0 ],
         "northEast": [ 54.0, 10.0 ]
@@ -122,8 +122,8 @@
     ],
     "projects" :  [
         {
-            "title": "csMap",
-            "url": "data/projects/20141104_csMap/project.json"
+            "title": "Alblasserwaard",
+            "url": "data/projects/20150511/project.json"
         },
         {
             "title": "test",
