@@ -12,16 +12,24 @@ class ConfigurationService implements IConfiguration {
      * Create a configuration service based on a configuration file.
      */
     constructor(private configurationFile: string) {
-        fs.readFile(configurationFile, 'utf8', (err, data) => {
-          if (err) throw err;
-          var content: Object = JSON.parse(data);
-          for (var key in content) {
-              if (content.hasOwnProperty(key)) {
-                  var value = content[key];
-                  this.add(key, value);
-              }
-          }
-        });
+        var data = fs.readFileSync(configurationFile, 'utf8');
+        var content: Object = JSON.parse(data);
+        for (var key in content) {
+            if (content.hasOwnProperty(key)) {
+                var value = content[key];
+                this.add(key, value);
+            }
+        }
+        // fs.readFile(configurationFile, 'utf8', (err, data) => {
+        //   if (err) throw err;
+        //   var content: Object = JSON.parse(data);
+        //   for (var key in content) {
+        //       if (content.hasOwnProperty(key)) {
+        //           var value = content[key];
+        //           this.add(key, value);
+        //       }
+        //   }
+        // });
     }
 
     initialize(init: { key: string; value: string; }[]) {

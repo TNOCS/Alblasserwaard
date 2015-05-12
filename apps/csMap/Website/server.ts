@@ -1,12 +1,13 @@
-﻿import express         = require('express');
-import http            = require('http');
-import path            = require('path');
-import offlineSearch   = require('cs-offline-search');
-import cc              = require("./ClientConnection");
-import MapLayerFactory = require('./services/MapLayerCreator/MapLayerFactory');
-import fr              = require("./layers/FlightRadar");
-import DataSource      = require("./sensors/DataSource");
-import MessageBus      = require('./services/bus/MessageBus');
+﻿import express              = require('express');
+import http                 = require('http');
+import path                 = require('path');
+import offlineSearch        = require('cs-offline-search');
+import cc                   = require("./ClientConnection");
+import MapLayerFactory      = require('./services/MapLayerCreator/MapLayerFactory');
+import fr                   = require("./layers/FlightRadar");
+import DataSource           = require("./sensors/DataSource");
+import MessageBus           = require('./services/bus/MessageBus');
+import BagDatabase          = require('./services/database/BagDatabase');
 import ConfigurationService = require('./services/configuration/ConfigurationService');
 
 /**
@@ -22,7 +23,7 @@ var server        = express();
 var httpServer    = require('http').Server(server);
 var cm            = new cc.ConnectionManager(httpServer);
 var messageBus    = new MessageBus();
-var configService = new ConfigurationService('./configuration.json');
+var config = new ConfigurationService('./configuration.json');
 
 // all environments
 server.set('port', '3002');
@@ -43,7 +44,10 @@ var ds = new DataSource.DataSourceService(cm,"DataSource");
 ds.Start();
 server.get("/datasource", ds.GetDataSource);
 
-var mapLayerFactory = new MapLayerFactory(configService, messageBus);
+var bagDatabase = new BagDatabase(config);
+server.get(config["resolveAddress"], (req, res) => bagDatabase.lookupAddress(req, res));
+
+var mapLayerFactory = new MapLayerFactory(config, messageBus);
 server.post('/projecttemplate', (req, res) => mapLayerFactory.process(req, res));
 
 server.use(express.static(path.join(__dirname, 'public')));

@@ -1,4 +1,5 @@
 {
     "bagConnectionStringDesc": "Add the BAG connection string here, including username and pwd, if any.",
-    "bagConnectionString": "process.env.DATABASE_URL || 'postgres://postgres:m@localhost:5432/gisbook'"
+    "bagConnectionString": "postgres://bag_user:bag4all@localhost:5432/bag",
+    "resolveAddress": "/lookup_address/zip_number/:zip/:number"
 }
