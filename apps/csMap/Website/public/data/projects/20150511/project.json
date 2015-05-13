@@ -23,41 +23,12 @@
 			"showTimeline" : false,
 			"showLeftmenu" : true,
 			"showMap" : true,
+			"viewBounds" : {
+				"southWest" : [51.6, 4.4],
+				"northEast" : [52.2, 5.5]
+			},
 			"visiblelayers" : [
 			]
-		}, {
-			"id" : "flight",
-			"name" : "Flights",
-			"showTimeline" : true,
-			"showLeftmenu" : true,
-			"showMap" : true,
-			"baselayer" : "Positron",
-			"visiblelayers" : [
-				"FlightRadar"
-			],
-			"widgets" : [{
-					"directive" : "indicators",
-					"left" : "10px",
-					"top" : "10px",
-					"width" : "255px",
-					"height" : "435px",
-					"data" : {
-						"title" : "Sensor Data 1",
-						"indicators" : [{
-								"visual" : "circular",
-								"sensor" : "datasource/test"
-							}, {
-								"visual" : "sparkline",
-								"sensor" : "datasource/test2"
-							}
-						]
-					}
-				}
-			],
-			"viewBounds" : {
-				"southWest" : [50.7, 3.3],
-				"northEast" : [53.5, 7.3]
-			}
 		}, {
 			"id" : "health",
 			"name" : "Health",
@@ -79,6 +50,19 @@
 			"showTimeline" : false,
 			"showLeftmenu" : true,
 			"showMap" : false
+		}, {
+			"id" : "datatable",
+			"name" : "Table",
+			"showTimeline" : false,
+			"showLeftmenu" : false,
+			"showMap" : false,
+			"widgets" : [{
+					"directive" : "datatable",
+					"borderwidth" : "0px",
+					"width" : "100%",
+					"height" : "100%"
+				}
+			]
 		}
 	],
 	"expertMode" : 3,
@@ -2867,6 +2851,23 @@
 					"enabled" : false,
 					"opacity" : 100
 				}, {
+					"id" : "Carecure",
+					"reference" : "Carecure",
+					"languages" : {
+						"nl" : {
+							"title" : "Witte kaart",
+							"description" : "Zorglocaties Alblasserwaard."
+						},
+						"en" : {
+							"title" : "Care 'n cure map",
+							"description" : "Care 'n cure location in Alblasserwaard."
+						}
+					},
+					"type" : "GeoJson",
+					"url" : "data/projects/20150511/carecure-Albl.json",
+					"enabled" : false,
+					"opacity" : 100
+				}, {
 					"id" : "Dijken",
 					"reference" : "Dijken",
 					"languages" : {
@@ -2889,15 +2890,49 @@
 					"languages" : {
 						"nl" : {
 							"title" : "Gevaarlijke objecten",
-							"description" : "Gevaarlijke objecten in Nederland."
+							"description" : "Gevaarlijke objecten in de Alblasserwaard."
 						},
 						"en" : {
 							"title" : "Hazardous objects",
-							"description" : "Hazardous objects in the Netherlands."
+							"description" : "Hazardous objects in the Alblasserwaard."
 						}
 					},
 					"type" : "GeoJson",
-					"url" : "data/projects/20150511/hazardous-objects.json",
+					"url" : "data/projects/20150511/hazardous-objects-Albl.json",
+					"enabled" : false,
+					"opacity" : 100
+				}, {
+					"id" : "OOVPOI",
+					"reference" : "OOVPOI",
+					"languages" : {
+						"nl" : {
+							"title" : "Nederlandse hulpdiensten",
+							"description" : "Nederlandse hulpdiensten POI's in de Alblasserwaard."
+						},
+						"en" : {
+							"title" : "Dutch Emergency Amenities",
+							"description" : "Dutch Emergency Amenities Points of Interest in the Alblasserwaard."
+						}
+					},
+					"type" : "GeoJson",
+					"url" : "data/projects/20150511/OOV-POI-Albl.json",
+					"enabled" : false,
+					"opacity" : 100
+				}, {
+					"id" : "Childcare",
+					"reference" : "Childcare",
+					"languages" : {
+						"nl" : {
+							"title" : "Kinderzorg kaart",
+							"description" : "Kinderzorg kaart Alblasserwaard."
+						},
+						"en" : {
+							"title" : "Child care map",
+							"description" : "Child care map Alblasserwaard."
+						}
+					},
+					"type" : "GeoJson",
+					"url" : "data/projects/20150511/childcare-Albl.json",
 					"enabled" : false,
 					"opacity" : 100
 				}, {
@@ -2917,23 +2952,6 @@
 					"url" : "data/projects/20150511/alblasserwaard_risico.json",
 					"enabled" : false,
 					"opacity" : 100
-				}, {
-					"id" : "OOVPOI",
-					"reference" : "OOVPOI",
-					"languages" : {
-						"nl" : {
-							"title" : "Nederlandse hulpdiensten",
-							"description" : "Nederlandse hulpdiensten POI's."
-						},
-						"en" : {
-							"title" : "Dutch Emergency Amenities",
-							"description" : "Dutch Emergency Amenities Points of Interest."
-						}
-					},
-					"type" : "GeoJson",
-					"url" : "data/projects/20150511/OOV-POIs.json",
-					"enabled" : false,
-					"opacity" : 100
 				}
 			]
 		}, {
@@ -2942,21 +2960,21 @@
 			"clustering" : false,
 			"oneLayerActive" : true,
 			"layers" : [{
-					"id" : "bag",
-					"reference" : "bag",
+					"id" : "OpenBaseMap",
+					"reference" : "OpenBaseMap",
 					"languages" : {
 						"nl" : {
-							"title" : "BAG",
-							"description" : "Basis Administratie Gebouwen (Bron: Kadaster, via PDOK.nl)."
+							"title" : "Open Base Map",
+							"description" : "Open Base Map"
 						},
 						"en" : {
-							"title" : "BAG (Cadastre)",
-							"description" : "Dutch Cadastre's Basis Administratie Gebouwen. (Source: PDOK.nl.)"
+							"title" : "Open Base Map",
+							"description" : "Open Base Map"
 						}
 					},
 					"type" : "wms",
-					"wmsLayers" : "pand,ligplaats,standplaats,verblijfsobject",
-					"url" : "http://geodata.nationaalgeoregister.nl/bagviewer/wms?",
+					"wmsLayers": "3W7WY2IV2JL019MP3LFH62CLB73O6V_PostNL_Postcode_gebieden",
+					"url" : "https://kaart.geo4oov.nl/GWCGateWay/dispatch",
 					"enabled" : false,
 					"opacity" : 25
 				}, {
@@ -3011,6 +3029,31 @@
 			"clustering" : false,
 			"oneLayerActive" : true,
 			"layers" : [{
+					"reference" : "flooding_t100_o",
+					"title" : "Flooding t100 unprotected",
+					"description" : "Flooding areas with probability of once in 100 years for unprotected areas (along rivers).",
+					"type" : "GeoJson",
+					"url" : "data/projects/20150511/flooding-areas_t100_vg2o-simplified.json",
+					"enabled" : false,
+					"opacity" : 100
+				}, {
+					"id" : "veiligheidsregio",
+					"reference" : "veiligheidsregio",
+					"languages" : {
+						"nl" : {
+							"title" : "Veiligheidsregios",
+							"description" : "Statistische data per veiligheidsregio. (Bron: CBS, Regioatlas. Geactualiseerd: 1 november 2014.)"
+						},
+						"en" : {
+							"title" : "Safety region",
+							"description" : "Statistical data per safety region. (Source: CBS, Regioatlas: 1 november 2014.)"
+						}
+					},
+					"type" : "GeoJson",
+					"url" : "data/projects/20141104_csMap/veiligheidsregios.json",
+					"enabled" : false,
+					"opacity" : 100
+				},{
 					"id" : "9d1dc210f8f5474f977c9d0f24df2ff8",
 					"reference" : "zorgkantoor",
 					"title" : "Health regions",
@@ -3053,7 +3096,7 @@
 					"url" : "data/projects/20141104_csMap/gemeente.json",
 					"enabled" : false,
 					"opacity" : 100
-				},{
+				}, {
 					"id" : "p4",
 					"reference" : "p4",
 					"title" : "P4 topojson",

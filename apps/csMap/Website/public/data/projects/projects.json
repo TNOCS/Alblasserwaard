@@ -13,7 +13,7 @@
             "title"       :  "OpenStreetMap HOT",
             "subtitle"    :  "Road",
             "url"         :  "http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",
-            "isDefault"   :  true,
+            "isDefault"   :  false,
             "minZoom"     :  7,
             "maxZoom"     :  19,
             "subdomains"  :  ["a", "b", "c"],
@@ -38,6 +38,7 @@
            "minZoom"     :  7,
            "maxZoom"     :  18,
            "id"          :  "osm.mapnik",
+					 "isDefault"	 : true,
            "attribution" :  "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>",
            "preview"     :  "https://a.tiles.mapbox.com/v3/foursquare.meku766r/11/1051/673.png"
        },
@@ -110,7 +111,7 @@
        },
        {
            "title"       :  "Positron",
-           "isDefault"   :  true,
+           "isDefault"   :  false,
            "subtitle"    :  "From CartoDB",
            "subdomains"  :  ["a","b","c","d"],
            "minZoom"     :  0,
