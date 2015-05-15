@@ -4,6 +4,8 @@
 			"name" : "Gemeente",
 			"style" : {
 				"fillColor" : "#ffff99",
+				"fillOpacity" : 0.0,
+				"opacity" : 0.9,
 				"strokeColor" : "#000000",
 				"drawingMode" : "MultiPolygon",
 				"strokeWidth" : 1,

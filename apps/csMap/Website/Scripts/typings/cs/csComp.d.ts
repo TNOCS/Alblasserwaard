@@ -2545,6 +2545,13 @@ declare module StyleList {
     }
 }
 
+declare module Voting {
+    /**
+      * Module
+      */
+    var myModule: any;
+}
+
 declare module Timeline {
     interface ITimelineService {
         getTimelineOptions(): csComp.Services.ITimelineOptions;
@@ -2599,13 +2606,6 @@ declare module Timeline {
         */
         loadLocales(): void;
     }
-}
-
-declare module Voting {
-    /**
-      * Module
-      */
-    var myModule: any;
 }
 
 declare module WidgetEdit {
@@ -2771,43 +2771,6 @@ declare module csComp.Services {
         static $inject: string[];
         constructor($messageBusService: Services.MessageBusService, $layerService: Services.LayerService);
     }
-}
-
-declare module csComp.Services {
-    class DashboardService {
-        private $rootScope;
-        private $compile;
-        private $location;
-        private $translate;
-        private $messageBusService;
-        private $layerService;
-        private $mapService;
-        maxBounds: IBoundingBox;
-        featureDashboard: csComp.Services.Dashboard;
-        mainDashboard: csComp.Services.Dashboard;
-        editMode: boolean;
-        activeWidget: IWidget;
-        dashboards: any;
-        widgetTypes: {
-            [key: string]: IWidget;
-        };
-        socket: any;
-        editWidgetMode: boolean;
-        init(): void;
-        static $inject: string[];
-        constructor($rootScope: any, $compile: any, $location: ng.ILocationService, $translate: ng.translate.ITranslateService, $messageBusService: Services.MessageBusService, $layerService: Services.LayerService, $mapService: Services.MapService);
-        selectDashboard(dashboard: csComp.Services.Dashboard, container: string): void;
-        addNewWidget(widget: IWidget, dashboard: Dashboard): IWidget;
-        updateWidget(widget: csComp.Services.IWidget): void;
-        addWidget(widget: IWidget): IWidget;
-        editWidget(widget: csComp.Services.IWidget): void;
-        stopEditWidget(): void;
-        removeWidget(): void;
-    }
-    /**
-      * Module
-      */
-    var myModule: any;
 }
 
 declare module csComp.Services {
@@ -3058,6 +3021,43 @@ declare module csComp.Services {
          */
         private updateMapFilter(group);
         private resetMapFilter(group);
+    }
+    /**
+      * Module
+      */
+    var myModule: any;
+}
+
+declare module csComp.Services {
+    class DashboardService {
+        private $rootScope;
+        private $compile;
+        private $location;
+        private $translate;
+        private $messageBusService;
+        private $layerService;
+        private $mapService;
+        maxBounds: IBoundingBox;
+        featureDashboard: csComp.Services.Dashboard;
+        mainDashboard: csComp.Services.Dashboard;
+        editMode: boolean;
+        activeWidget: IWidget;
+        dashboards: any;
+        widgetTypes: {
+            [key: string]: IWidget;
+        };
+        socket: any;
+        editWidgetMode: boolean;
+        init(): void;
+        static $inject: string[];
+        constructor($rootScope: any, $compile: any, $location: ng.ILocationService, $translate: ng.translate.ITranslateService, $messageBusService: Services.MessageBusService, $layerService: Services.LayerService, $mapService: Services.MapService);
+        selectDashboard(dashboard: csComp.Services.Dashboard, container: string): void;
+        addNewWidget(widget: IWidget, dashboard: Dashboard): IWidget;
+        updateWidget(widget: csComp.Services.IWidget): void;
+        addWidget(widget: IWidget): IWidget;
+        editWidget(widget: csComp.Services.IWidget): void;
+        stopEditWidget(): void;
+        removeWidget(): void;
     }
     /**
       * Module
