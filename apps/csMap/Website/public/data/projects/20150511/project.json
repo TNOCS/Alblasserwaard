@@ -2952,6 +2952,23 @@
 					"url" : "data/projects/20150511/alblasserwaard_risico.json",
 					"enabled" : false,
 					"opacity" : 100
+				}, {
+					"id" : "Dikepoles",
+					"reference" : "Dikepoles",
+					"languages" : {
+						"nl" : {
+							"title" : "Dijkpalen en -nummers",
+							"description" : "Dijkpalen en -nummers in de buurt van dijken en waterwegen."
+						},
+						"en" : {
+							"title" : "Dike poles",
+							"description" : "Dike poles and numbers along dikes and waterways."
+						}
+					},
+					"type" : "GeoJson",
+					"url" : "data/projects/20150511/dike-poles.json",
+					"enabled" : false,
+					"opacity" : 100
 				}
 			]
 		}, {

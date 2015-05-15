@@ -330,7 +330,7 @@ module csComp.Services {
                 icon = new L.DivIcon({
                     className: '',
                     iconSize: new L.Point(feature.effectiveStyle.iconWidth, feature.effectiveStyle.iconHeight),
-                    html: feature.htmlStyle
+                    html: Helpers.convertStringFormat(feature, feature.htmlStyle)
                 });
             } else {
                 var html = '<div ';
@@ -342,7 +342,7 @@ module csComp.Services {
                 //if (ft.style.fillColor == null && iconUri == null) ft.style.fillColor = 'lightgray';
 
                 // TODO refactor to object
-                props['background']    = feature.effectiveStyle.fillColor;
+                (feature.effectiveStyle.innerTextColor != null) ? null : props['background'] = feature.effectiveStyle.fillColor;
                 props['width']         = feature.effectiveStyle.iconWidth   + 'px';
                 props['height']        = feature.effectiveStyle.iconHeight  + 'px';
                 props['border-radius'] = feature.effectiveStyle.cornerRadius + '%';
@@ -361,16 +361,31 @@ module csComp.Services {
                 }
 
                 html += '\'>';
+
+
+            var fontHtml;
             if (feature.effectiveStyle.innerTextProperty != null && feature.properties.hasOwnProperty(feature.effectiveStyle.innerTextProperty)) {
+              var color;
+              if (feature.effectiveStyle.innerTextColor != null) {
+                color = feature.effectiveStyle.innerTextColor;
+              } else {
+                color = 'black';
+              }
+              if (iconUri != null) {
+                fontHtml = "style=\'font-color:" + color + "; font-size:14px; font-weight:bold;\'>" + feature.properties[feature.effectiveStyle.innerTextProperty];
+              } else {
                 html += "<span style='font-size:12px;vertical-align:-webkit-baseline-middle'>" + feature.properties[feature.effectiveStyle.innerTextProperty] + "</span>";
+              }
             }
-            else if (iconUri != null) {
+
+            if (iconUri != null) {
                     // Must the iconUri be formatted?
                     if (iconUri != null && iconUri.indexOf('{') >= 0) iconUri = Helpers.convertStringFormat(feature, iconUri);
 
                     html += '<img src=\'' + iconUri + '\' style=\'width:' + (feature.effectiveStyle.iconWidth - 6) + 'px;height:' + (feature.effectiveStyle.iconHeight - 6) + 'px';
                     if (feature.effectiveStyle.rotate && feature.effectiveStyle.rotate > 0) html += ';transform:rotate(' + feature.effectiveStyle.rotate + 'deg)';
                     html += '\' />';
+                    if (fontHtml) html += "<p " + fontHtml + "</p>";
                 }
 
                 html += '</div>';

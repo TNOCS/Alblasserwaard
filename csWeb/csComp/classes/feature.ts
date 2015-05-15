@@ -177,6 +177,7 @@
         rotate?              : number;
         innerTextProperty?   : string;
         innerTextSize?       : number;
+        innerTextColor?      : string;
         analysispropertyType?: any;
         rotateProperty?      : string;
     }

@@ -186,7 +186,7 @@
         {
           this.$messageBusService.subscribe('feature', (action : string, feature : IFeature)=>
           {
-            if (!feature.fType) return;
+            if (!feature || !feature.fType) return;
             var props = csComp.Helpers.getPropertyTypes(feature.fType, this.propertyTypeData);
             switch (action){
               case 'onFeatureDeselect':
@@ -582,6 +582,7 @@
                 if (ft.style.iconWidth !== null) s.iconWidth = ft.style.iconWidth;
                 if (ft.style.iconHeight !== null) s.iconHeight = ft.style.iconHeight;
                 if (ft.style.innerTextProperty !== null) s.innerTextProperty = ft.style.innerTextProperty;
+                if (ft.style.innerTextColor !== null) s.innerTextColor = ft.style.innerTextColor;
                 if (ft.style.innerTextSize !== null) s.innerTextSize = ft.style.innerTextSize;
                 if (ft.style.cornerRadius !== null) s.cornerRadius = ft.style.cornerRadius;
                 if (ft.style.rotateProperty && feature.properties.hasOwnProperty(ft.style.rotateProperty)) {
