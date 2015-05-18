@@ -428,7 +428,7 @@
 
         private updateHierarchyLinks(feature: IFeature): void {
             if (!feature) return;
-            // Add properties defined inside of layers to the project-wide properties. 
+            // Add properties defined inside of layers to the project-wide properties.
             this.$layerService.project.groups.forEach((group) => {
                 group.layers.forEach((l) => {
                     if (l.type == "hierarchy" && l.enabled) {

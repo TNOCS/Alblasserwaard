@@ -131,7 +131,7 @@
         }
 
         public connect(callback: Function) {
-            if (this.isConnected || this.isConnecting) return;
+            if (this.isConnected || this.isConnecting || typeof io === "undefined" ) return;
             this.socket = io();
             this.isConnecting = true;
             this.socket.on('connect', () => {

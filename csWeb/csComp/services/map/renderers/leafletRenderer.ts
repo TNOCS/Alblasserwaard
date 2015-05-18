@@ -342,7 +342,7 @@ module csComp.Services {
                 //if (ft.style.fillColor == null && iconUri == null) ft.style.fillColor = 'lightgray';
 
                 // TODO refactor to object
-                (feature.effectiveStyle.innerTextColor != null) ? null : props['background'] = feature.effectiveStyle.fillColor;
+                (feature.effectiveStyle.fillOpacity < 0.01) ? null : props['background'] = feature.effectiveStyle.fillColor; //No background when opacity is set to 0
                 props['width']         = feature.effectiveStyle.iconWidth   + 'px';
                 props['height']        = feature.effectiveStyle.iconHeight  + 'px';
                 props['border-radius'] = feature.effectiveStyle.cornerRadius + '%';
@@ -372,7 +372,7 @@ module csComp.Services {
                 color = 'black';
               }
               if (iconUri != null) {
-                fontHtml = "style=\'font-color:" + color + "; font-size:14px; font-weight:bold;\'>" + feature.properties[feature.effectiveStyle.innerTextProperty];
+                fontHtml = "style=\'font-color:" + color + "; font-size:14px;margin-top:-3px;font-weight:bold;\'>" + feature.properties[feature.effectiveStyle.innerTextProperty];
               } else {
                 html += "<span style='font-size:12px;vertical-align:-webkit-baseline-middle'>" + feature.properties[feature.effectiveStyle.innerTextProperty] + "</span>";
               }

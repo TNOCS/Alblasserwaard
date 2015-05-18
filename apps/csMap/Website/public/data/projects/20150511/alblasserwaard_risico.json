@@ -4,17 +4,18 @@
       "name": "Risico",
       "style": {
         "drawingMode": "Point",
-        "iconUri": "images/Ziekenhuis.png",
         "strokeWidth": 1,
-        "iconWidth": 30,
-        "iconHeight": 30,
-        "nameLabel": "boundedBy"
+		"strokeColor": "#cc1111",
+		"fillOpacity" : 0.0,
+        "iconWidth": 16,
+        "iconHeight": 16,
+        "nameLabel": "POSTCODE"
       },
       "propertyTypeData": [
         {
           "label": "boundedBy",
           "title": "boundedBy",
-          "description": "Env%5B52.045067+%3A+52.045067%2C+4.729416+%3A+4.729416%5D",
+          "description": "",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,
@@ -23,7 +24,7 @@
         {
           "label": "ROT_CODE",
           "title": "ROT_CODE",
-          "description": "0595060066001",
+          "description": "",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,
@@ -32,7 +33,7 @@
         {
           "label": "ROT_STATUS",
           "title": "ROT_STATUS",
-          "description": "GEAUTORISEERD",
+          "description": "",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,
@@ -41,7 +42,7 @@
         {
           "label": "DATE_CHAN3",
           "title": "DATE_CHAN3",
-          "description": "12-02-2015",
+          "description": "",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,
@@ -50,7 +51,7 @@
         {
           "label": "PREVAPCODE",
           "title": "PREVAPCODE",
-          "description": "N",
+          "description": "",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,
@@ -59,7 +60,7 @@
         {
           "label": "OMSCHRIJV5",
           "title": "OMSCHRIJV5",
-          "description": "60",
+          "description": "",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,
@@ -68,7 +69,7 @@
         {
           "label": "INSTELLIN6",
           "title": "INSTELLIN6",
-          "description": "4400",
+          "description": "",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,
@@ -77,7 +78,7 @@
         {
           "label": "GEMEENTE",
           "title": "GEMEENTE",
-          "description": "Verpleegtehuizen%2C+%3E+10+pers.",
+          "description": "",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,
@@ -86,7 +87,7 @@
         {
           "label": "PLAATS",
           "title": "PLAATS",
-          "description": "BODEGRAVEN-REEUWIJK",
+          "description": "",
           "type": "text",
           "section": "Adres",
           "visibleInCallOut": true,
@@ -96,7 +97,7 @@
         {
           "label": "POSTCODE",
           "title": "POSTCODE",
-          "description": "Bodegraven-Reeuwijk",
+          "description": "",
           "type": "text",
           "section": "Adres",
           "visibleInCallOut": true,
@@ -106,7 +107,7 @@
         {
           "label": "HUISNUMMER",
           "title": "HUISNUMMER",
-          "description": "Reeuwijk",
+          "description": "",
           "type": "text",
           "section": "Adres",
           "visibleInCallOut": true,
@@ -116,7 +117,7 @@
         {
           "label": "STRAAT",
           "title": "STRAAT",
-          "description": "2811EA",
+          "description": "",
           "type": "text",
           "section": "Adres",
           "visibleInCallOut": true,
@@ -126,7 +127,7 @@
         {
           "label": "AOBJECTID",
           "title": "AOBJECTID",
-          "description": "1",
+          "description": "",
           "type": "text",
           "section": "Adres",
           "visibleInCallOut": true,
@@ -136,7 +137,7 @@
         {
           "label": "URL",
           "title": "URL",
-          "description": "19",
+          "description": "",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,
@@ -154,7 +155,7 @@
         {
           "label": "XCOORD",
           "title": "XCOORD",
-          "description": " null",
+          "description": " ",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,
@@ -163,7 +164,7 @@
         {
           "label": "PRIORITEIT",
           "title": "PRIORITEIT",
-          "description": " null",
+          "description": "",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,
@@ -172,7 +173,7 @@
         {
           "label": "OMSCHRIJ17",
           "title": "OMSCHRIJ17",
-          "description": " null",
+          "description": "",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,
@@ -181,7 +182,7 @@
         {
           "label": "AUTORISA18",
           "title": "AUTORISA18",
-          "description": " null",
+          "description": "",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,
@@ -190,7 +191,7 @@
         {
           "label": "ROT_NAAM",
           "title": "ROT_NAAM",
-          "description": " null",
+          "description": "",
           "type": "text",
           "visibleInCallOut": true,
           "canEdit": true,

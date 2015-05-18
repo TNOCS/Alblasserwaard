@@ -90,7 +90,7 @@
                         rl.target = feature;
 
                         rl.title = FeatureProps.CallOut.title(feature.fType, feature);
-                        rl.icon = (feature.fType == null || feature.fType.style == null || !feature.fType.style.hasOwnProperty('iconUri') || feature.fType.style.iconUri.toLowerCase().indexOf('_media') >= 0) ? '' : feature.fType.style.iconUri;
+                        rl.icon = (feature.fType == null || feature.fType.style == null || !feature.fType.style.hasOwnProperty('iconUri') || feature.fType.style.iconUri.toLowerCase().indexOf('_media') >= 0) ? '' : csComp.Helpers.convertStringFormat(feature, feature.fType.style.iconUri);
                         rgr.relations.push(rl);
                     }
                 }
