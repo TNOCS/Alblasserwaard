@@ -2931,20 +2931,37 @@
 					"enabled" : false,
 					"opacity" : 100
 				}, {
-					"id" : "Transport",
-					"reference" : "Transport",
+					"id" : "Provinciale wegen",
+					"reference" : "Wegen",
 					"languages" : {
 						"nl" : {
-							"title" : "Transport Alblasserwaard",
-							"description" : "Transport Alblasserwaard."
+							"title" : "Provinciale wegen Alblasserwaard",
+							"description" : "Provinciale wegen in Alblasserwaard."
 						},
 						"en" : {
-							"title" : "Transport Alblasserwaard",
-							"description" : "Transport Alblasserwaard."
+							"title" : "Provincial roads Alblasserwaard",
+							"description" : "Provincial roads in Alblasserwaard."
 						}
 					},
 					"type" : "GeoJson",
-					"url" : "data/projects/20150511/trnsp_lok_pub.json",
+					"url" : "data/projects/20150511/wegen.json",
+					"enabled" : false,
+					"opacity" : 100
+				}, {
+					"id" : "Buisleidingen",
+					"reference" : "Buizen",
+					"languages" : {
+						"nl" : {
+							"title" : "Buisleidingen Alblasserwaard",
+							"description" : "Buisleidingen in Alblasserwaard."
+						},
+						"en" : {
+							"title" : "Buisleidingen Alblasserwaard",
+							"description" : "Buisleidingen in Alblasserwaard."
+						}
+					},
+					"type" : "GeoJson",
+					"url" : "data/projects/20150511/buisleidingen-simple.json",
 					"enabled" : false,
 					"opacity" : 100
 				}
@@ -3042,9 +3059,9 @@
 				}, {
 					"reference" : "flooding_t100_b",
 					"title" : "Flooding t100 protected",
-					"description" : "Flooding areas with probability of once in 100 years for protected areas (along rivers).",
+					"description" : "Flooding areas with probability of once in 100 years for protected areas (within dikes).",
 					"type" : "GeoJson",
-					"url" : "data/projects/20150511/flooding-areas_t100_vg2b-simplified.json",
+					"url" : "data/projects/20150511/flooding-areas_t100_vg2b_2_simplified.json",
 					"enabled" : false,
 					"opacity" : 100
 				}, {
@@ -3052,7 +3069,15 @@
 					"title" : "Flooding t1000 unprotected",
 					"description" : "Flooding areas with probability of once in 1000 years for unprotected areas (along rivers).",
 					"type" : "GeoJson",
-					"url" : "data/projects/20150511/flooding-areas_t100_vg2b_2_simplified.json",
+					"url" : "data/projects/20150511/flooding-areas_t1000vg2o_simplified.json",
+					"enabled" : false,
+					"opacity" : 100
+				}, {
+					"reference" : "flooding_t1000_b",
+					"title" : "Flooding t1000 protected",
+					"description" : "Flooding areas with probability of once in 1000 years for protected areas (within dikes).",
+					"type" : "GeoJson",
+					"url" : "data/projects/20150511/flooding-areas_t1000vg2b_simplified.json",
 					"enabled" : false,
 					"opacity" : 100
 				}
